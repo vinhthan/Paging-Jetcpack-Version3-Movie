@@ -1,0 +1,2 @@
+rootProject.name = "PagingJetpackVersion3Demo"
+include ':app'
