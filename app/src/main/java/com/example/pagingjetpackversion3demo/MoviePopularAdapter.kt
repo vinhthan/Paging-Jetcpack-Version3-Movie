@@ -1,5 +1,6 @@
 package com.example.pagingjetpackversion3demo
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,16 +19,19 @@ class MoviePopularAdapter: PagingDataAdapter<ListMoviePopular, MoviePopularAdapt
         fun bind(data: ListMoviePopular) {
             tvTitle.text = data.title
             Glide.with(imgPoster).load(data.getImagePosterPathPopular()).into(imgPoster)
+            Log.d("123123", "id ${data.id}")
         }
     }
 
     class DiffUtilCallBack: DiffUtil.ItemCallback<ListMoviePopular>() {
         override fun areItemsTheSame(oldItem: ListMoviePopular, newItem: ListMoviePopular): Boolean {
-            return oldItem.title == newItem.title
+            //return oldItem.title == newItem.title
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: ListMoviePopular, newItem: ListMoviePopular): Boolean {
-            return oldItem.title == newItem.title
+            //return oldItem.title == newItem.title
+            return oldItem.id == newItem.id
         }
     }
 

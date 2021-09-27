@@ -11,6 +11,8 @@ data class Movie(
 )
 
 data class ListMoviePopular(
+    @SerializedName("id")
+    var id: Int,
     @SerializedName("title")
     var title: String,
     @SerializedName("poster_path")
