@@ -30,10 +30,49 @@ class MoviePopularAdapter: PagingDataAdapter<ListMoviePopular, MoviePopularAdapt
         }
 
         override fun areContentsTheSame(oldItem: ListMoviePopular, newItem: ListMoviePopular): Boolean {
-            //return oldItem.title == newItem.title
-            return oldItem.id == newItem.id
+            return when {
+                oldItem.id != newItem.id -> {
+                    false
+                }
+                oldItem.title != newItem.title -> {
+                    false
+                }
+                oldItem.getImagePosterPathPopular() != newItem.getImagePosterPathPopular() -> {
+                    false
+                }
+                else -> true
+            }
         }
     }
+
+/*    class Diff(private val oldList: List<ListMoviePopular>, private val newList: List<ListMoviePopular>): DiffUtil.Callback() {
+        override fun getOldListSize(): Int {
+            return oldList.size
+        }
+
+        override fun getNewListSize(): Int {
+            return newList.size
+        }
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return when {
+                oldList[oldItemPosition].id != newList[newItemPosition].id -> {
+                    false
+                }
+                oldList[oldItemPosition].title != newList[newItemPosition].title -> {
+                    false
+                }
+                oldList[oldItemPosition].getImagePosterPathPopular() != newList[newItemPosition].getImagePosterPathPopular() -> {
+                    false
+                }
+                else -> true
+            }
+        }
+    }*/
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.bind(getItem(position)!!)
