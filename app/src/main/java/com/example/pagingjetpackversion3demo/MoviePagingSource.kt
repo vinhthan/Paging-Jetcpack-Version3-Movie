@@ -19,7 +19,8 @@ class MoviePagingSource(private val apiService: RetrofitService): PagingSource<I
             val nextPage = params.key ?: FIRST_PAGE
             val response = apiService.getMoviePopular("034bbd1b233d6726e0c7dc7f338657f9", nextPage)
 
-            LoadResult.Page(data = response.results, prevKey = null, nextKey = response.page + 1)
+            //LoadResult.Page(data = response.results, prevKey = null, nextKey = response.page + 1)
+            LoadResult.Page(data = response.results, prevKey = null, nextKey = if (response.page < response.totalPages) response.page + 1 else null)
 
             //
             /*val nextPage = params.key ?: FIRST_PAGE

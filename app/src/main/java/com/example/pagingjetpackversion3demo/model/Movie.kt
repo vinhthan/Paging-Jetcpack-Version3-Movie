@@ -8,6 +8,8 @@ data class Movie(
     var page: Int,
     @SerializedName("results")
     var results: List<ListMoviePopular>,
+    @SerializedName("total_pages")
+    var totalPages: Int,
 )
 
 data class ListMoviePopular(
